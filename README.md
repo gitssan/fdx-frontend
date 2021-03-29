@@ -24,13 +24,17 @@ due to time constrains, nice to haves:
 $ npm install
 ```
 
+- please also install server at https://github.com/gitssan/fdx-server
+- follow installation instructions as described in the readme
+
 ## Running the app
 
 ```bash
 $ npm run start
 ```
 
-http://localhost:422000
+http://localhost:4200
+( listening to server on http://localhost: 3000)
 
 ## Testing: cypress
 
