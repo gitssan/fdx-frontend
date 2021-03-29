@@ -3,19 +3,20 @@
 - a display of my (full) Stack capabilities: Application Logic, pipelines, automated-testing. From A to Z.
 
 due to time constrains, nice to haves:
--directives for (confirm)password control fields
--had less focus on SASS/CSS/HTML
+
+- directives for (confirm)password control fields
+- had less focus on SASS/CSS/HTML
 
 ## Frontend Stack
 
 - Angular11
-- NGRX State Management
-- RxJS
 - NGX-Rocket starter kit
 - NG-Bootstrap
-- GitHub (CI/CD pipeline)
+- NGRX State Management (Effects, FeatureSelectors)
+- RxJS
+- GitHub (CI/CD pipeline, automated testing/deploy)
 - deploy to FTP (dev, master)
-- Cypress integration testing
+- integration testing with Cypress
 
 ## Installation
 
