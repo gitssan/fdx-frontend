@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private i18nService: I18nService
   ) {
-    console.log('env', '20:15, 27-03-2021', environment);
+    console.log('env', '09:07, 28-03-2021', environment);
 
     const payload = {
       appLoading: true,
