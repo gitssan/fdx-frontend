@@ -1,5 +1,6 @@
 # Fedex technical assessment
-- a display of my (full) Stack capabilities: Application Logic, pipelines, automated-testing. From A to Z. 
+
+- a display of my (full) Stack capabilities: Application Logic, pipelines, automated-testing. From A to Z.
 
 due to time constrains, nice to haves:
 -directives for (confirm)password control fields
@@ -26,6 +27,14 @@ $ npm install
 
 ```bash
 $ npm run start
+```
+
+http://localhost:422000
+
+## Testing: cypress
+
+```bash
+$ npm run cypress:open
 ```
 
 ## Online demo
