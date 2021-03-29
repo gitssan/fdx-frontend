@@ -4,6 +4,7 @@
 
 due to time constrains, nice to haves:
 
+- tests are written on a really basic/general level, would have loved to be able to have spent way more time on that, the power of automated testing for an Engineer, in the perspective of TDD, is highly underestimated
 - directives for (confirm)password control fields
 - had less focus on SASS/CSS/HTML
 
