@@ -1,0 +1,247 @@
+<div class="signup-container bg-light">
+  <div class="signup-box">
+    <!-- <h1 translate>APP_NAME</h1> -->
+    <img src="https://1000merken.com/wp-content/uploads/2020/04/FedEx-Logo-700x394.png" class="fedex-logo" alt="logo"/>
+    <div class="container">
+      <div class="card col-md-6 mt-3 mx-auto">
+        <div class="card-body">
+          <h1 class="card-title text-center">Sign-up form</h1>
+          <form (ngSubmit)="handleForm()" [formGroup]="signUpForm" novalidate autocomplete="false">
+            <div class="alert alert-danger" *ngIf="viewFeedback$ | async">
+              {{ (viewFeedback$ | async)?.feedback }}
+              <ul>
+                <li *ngFor="let log of (viewFeedback$ | async)?.log">{{ log }}</li>
+              </ul>
+            </div>
+            <div class="form-group">
+              <label class="d-block">
+                <div
+                  >First name
+                  <i
+                    placement="right"
+                    [ngbPopover]="popOverContentBasic"
+                    popoverTitle="First name"
+                    class="far fa-question-circle cursor-pointer"
+                  ></i
+                ></div>
+                <input
+                  type="text"
+                  (blur)="onBlurControl('firstName')"
+                  class="form-control"
+                  formControlName="firstName"
+                  placeholder="First name"
+                  autocomplete="false"
+                />
+                <small
+                  [ngClass]="displayValidationMessage('firstName') ? 'height--auto' : ''"
+                  class="text-danger height--0"
+                >
+                  First name is invalid
+                </small>
+              </label>
+              <label class="d-block">
+                <div
+                  >Last name
+                  <i
+                    placement="right"
+                    [ngbPopover]="popOverContentBasic"
+                    popoverTitle="Last name"
+                    class="cursor-pointer far fa-question-circle"
+                  ></i
+                ></div>
+                <input
+                  type="text"
+                  (blur)="onBlurControl('lastName')"
+                  class="form-control"
+                  formControlName="lastName"
+                  placeholder="Last name"
+                />
+                <small
+                  [ngClass]="displayValidationMessage('lastName') ? 'height--auto' : ''"
+                  class="text-danger height--0"
+                >
+                  Last name is invalid
+                </small>
+              </label>
+              <label class="d-block">
+                <div>Email address</div>
+                <input
+                  type="email"
+                  (blur)="onBlurControl('emailAddress')"
+                  class="form-control"
+                  formControlName="emailAddress"
+                  placeholder="Email address"
+                  autocomplete="false"
+                />
+                <small
+                  [ngClass]="displayValidationMessage('emailAddress') ? 'height--auto' : ''"
+                  class="text-danger height--0"
+                >
+                  Email address is invalid
+                </small>
+              </label>
+              <label class="d-block">
+                <div
+                  >Password
+                  <i
+                    placement="right"
+                    [ngbPopover]="popOverContentPassword"
+                    class="cursor-pointer"
+                    popoverTitle="Password"
+                    class="cursor-pointer far fa-question-circle"
+                  ></i>
+                </div>
+
+                <div class="input-group">
+                  <input
+                    [type]="viewPassword ? 'text' : 'password'"
+                    (blur)="onBlurControl('password')"
+                    class="form-control"
+                    formControlName="password"
+                    placeholder="Password"
+                    autocomplete="false"
+                  />
+
+                  <div class="input-group-append">
+                    <span (click)="viewPasswordToggle()" class="cursor-pointer input-group-text">
+                      <i [ngClass]="viewPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="row"
+                  *ngIf="displayValidationMessage('password')"
+                  style="margin-left: 0; margin-right: 0; margin-top: 10px; margin-bottom: 10px"
+                >
+                  <div
+                    *ngFor="let bars of cols; index as i"
+                    class="col-2 coll-strength--padding  coll-strength--grey coll-strength--{{
+                      cols.length - i > accumulatedPasswordErrors ? cols.length - accumulatedPasswordErrors : 'grey'
+                    }}"
+                  ></div>
+                </div>
+
+                <div
+                  class="row height--0"
+                  [ngClass]="
+                    this.displayValidationMessage('password') && getFormControl('password').invalid
+                      ? 'height--auto'
+                      : ''
+                  "
+                >
+                  <div class="col-6">
+                    <small> Should contain: </small>
+                    <small
+                      class="hdisplay--block"
+                      [ngClass]="hasError('password', SEGMENT_UPPER_CASE) ? 'text-danger' : 'text-success'"
+                    >
+                      uppercase(s)
+                    </small>
+                    <small
+                      [ngClass]="hasError('password', SEGMENT_LOWER_CASE) ? 'text-danger' : 'text-success'"
+                      class="display--block"
+                    >
+                      lowercase(s)
+                    </small>
+                    <small
+                      [ngClass]="hasError('password', SEGMENT_MIN_CHARS) ? 'text-danger' : 'text-success'"
+                      class="display--block"
+                    >
+                      a minimum of 8 characters
+                    </small>
+                  </div>
+
+                  <div
+                    class="col-6 height--0"
+                    [ngClass]="
+                      hasError('password', SEGMENT_FIRST_NAME) || hasError('password', SEGMENT_LAST_NAME)
+                        ? 'text-danger height--auto'
+                        : ''
+                    "
+                  >
+                    <small> Should not contain: </small>
+                    <small
+                      class="height--0"
+                      [ngClass]="hasError('password', SEGMENT_FIRST_NAME) ? 'text-danger height--auto' : ''"
+                    >
+                      First name pattern <strong>{{ firstNamePattern }}</strong>
+                    </small>
+                    <small
+                      class="height--0"
+                      [ngClass]="hasError('password', SEGMENT_LAST_NAME) ? 'text-danger height--auto' : ''"
+                    >
+                      Last name pattern <strong>{{ lastNamePattern }}</strong>
+                    </small>
+                  </div>
+                </div>
+              </label>
+              <label class="d-block cursor-pointer">
+                <div
+                  >Confirm password
+                  <i
+                    placement="right"
+                    ngbPopover="Must match password"
+                    popoverTitle="Confirm password"
+                    class="far fa-question-circle"
+                  ></i
+                ></div>
+
+                <div class="input-group">
+                  <input
+                    [type]="viewPassword ? 'text' : 'password'"
+                    (blur)="onBlurControl('confirmPassword')"
+                    class="form-control"
+                    formControlName="confirmPassword"
+                    placeholder="Confirm password"
+                    autocomplete="new-password"
+                  />
+
+                  <div class="input-group-append">
+                    <span (click)="viewPasswordToggle()" class="cursor-pointer input-group-text">
+                      <i [ngClass]="viewPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                    </span>
+                  </div>
+                </div>
+
+                <small
+                  [ngClass]="displayValidationMessage('confirmPassword') ? 'height--auto' : ''"
+                  class="text-danger height--0"
+                >
+                  Passwords dont match
+                </small>
+              </label>
+            </div>
+
+            <button
+              class="btn w-100"
+              [ngClass]="signUpForm.invalid || signupFlow.appLoading ? 'btn-secondary' : 'btn-primary'"
+              type="submit"
+              [disabled]="signUpForm.invalid || signupFlow.appLoading"
+            >
+              <i class="fas fa-cog fa-spin" style="color: #fff" *ngIf="signupFlow.appLoading"></i>
+              <span>Sign-up</span>
+            </button>
+            <div style="margin-top: 10px">All fields are required</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px">
+      <h6 class="d-inline-block" class="text-muted" style="color: #6f6f6f">technical assessment</h6>
+    </div>
+  </div>
+</div>
+
+<ng-template #popOverContentBasic>
+  - Only upper and lower case character(s)<br />
+  - No digits, no special characters<br />
+  - A minimum of 2, and maximum 20 characters<br />
+</ng-template>
+
+<ng-template #popOverContentPassword>
+  - Should be a minimum of 8 characters<br />
+  - Should contain lower and uppercase character(s)<br />
+  - Should not contain user's first or last name<br />
+  - These special characters are allowed: @#\$%\^\&*\)\(+=._-
+</ng-template>

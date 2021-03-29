@@ -1,0 +1,124 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+h1 {
+  color: #462895;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.signup-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.signup-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+}
+
+.ng-invalid.ng-touched:not(form) {
+  border-left: 4px solid theme-color("danger");
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}
+
+small {
+  display: block;
+  margin: 8px;
+}
+
+.fedex-logo {
+  width: 150px;
+}
+
+.height--0 {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.8s ease-in-out;
+  overflow: hidden;
+}
+
+.height--auto {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.fas,
+.far {
+  color: #777777;
+}
+
+.display--block {
+  display: block;
+}
+
+.coll-strength--padding {
+  padding: 3px;
+}
+
+.opacity--0 {
+  opacity: 0;
+}
+
+.btn-primary {
+  background-color: #462895;
+}
+
+input.ng-valid {
+  border-left: 4px solid #00c700;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.coll-strength--padding {
+  height: 2px;
+  padding: 0;
+}
+
+.coll-strength--grey {
+  background-color: #ccc;
+}
+.coll-strength--1 {
+  background-color: rgb(255, 0, 0);
+}
+
+.coll-strength--2 {
+  background-color: rgb(255, 0, 0);
+}
+
+.coll-strength--3 {
+  background-color: rgb(255, 153, 0);
+}
+
+.coll-strength--4 {
+  background-color: rgb(255, 153, 0);
+}
+.coll-strength--5 {
+  background-color: rgb(184, 255, 77);
+}
+
+.coll-strength--6 {
+  background-color: #00c700;
+}
+
+:nth-child(4) > .form-control.ng-invalid {
+  border-left: 1px solid #ced4da;
+}
+
+label > div {
+  margin-bottom: 10px;
+}

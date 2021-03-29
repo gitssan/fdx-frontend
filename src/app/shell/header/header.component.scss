@@ -1,0 +1,41 @@
+@import "src/theme/theme-variables";
+
+a.fedex-orange {
+  color: #462895 !important;
+  font-size: 30px !important;
+}
+
+.fedex-logo {
+  width: 150px;
+}
+
+.navbar {
+  margin-bottom: $spacer;
+}
+
+.nav-link.dropdown-toggle {
+  cursor: pointer;
+}
+
+.bg-dark {
+  background-color: #fff !important;
+}
+
+a {
+  color: #000;
+}
+
+button {
+  background-color: #462895;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+h6 {
+  color: #000;
+}
+
+.text.a-lign--right {
+  text-align: right;
+}
