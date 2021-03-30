@@ -18,12 +18,16 @@
           <a id="user-dropdown" class="nav-link fedex-orange" ngbDropdownToggle>
             <i class="fas fa-user-circle"></i>
           </a>
-          <div ngbDropdownMenu aria-labelledby="user-dropdown" class="dropdown-menu dropdown-menu-right">
+          <div
+            *ngIf="!loggingOut"
+            ngbDropdownMenu
+            aria-labelledby="user-dropdown"
+            class="dropdown-menu dropdown-menu-right"
+          >
             <h6 class="dropdown-header">
               <span translate>Logged in as</span> <b>{{ emailAddress }}</b> <br /><br />
               <div
                 (click)="logout()"
-                *ngIf="!loggingOut"
                 class="cursor-pointer text-align--right"
                 style="text-decoration: underline; text-align: right"
                 translate

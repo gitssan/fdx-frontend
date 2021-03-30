@@ -43,8 +43,8 @@ export class AppStateEffects {
             return { type: APP_INIT_FLOW, payload };
           })
         );
-      }),
-      delay(3000) // testing purposes
+      })
+      // delay(3000) // testing purposes
     )
   );
 

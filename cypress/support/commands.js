@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('quickLoginFail', (username, password) => {
+  cy.get('#login-username').type(username);
+  cy.get('#login-password').type(password);
+  cy.get('#login').submit();
+});
+
+Cypress.Commands.add('quickLogin', (userModel) => {
+  cy.get('[data-cy=firstName]').type(userModel.firstName);
+  // cy.get('[data-cy=submit]').should('be.disabled');
+});

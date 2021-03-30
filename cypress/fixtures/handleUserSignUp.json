@@ -1,0 +1,10 @@
+{
+  "message": "succesfully logged in",
+  "userModel": {
+    "firstName": "San",
+    "lastName": "Falcon",
+    "emailAddress": "fdx.mocked@gmail.com",
+    "createdAt": "2021-03-29T20:55:22.084Z",
+    "_id": "60623eba04c35c429459ef7c"
+  }
+}
